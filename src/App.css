@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+body {
+  background-color: #171717;
+  color: #fff;
+}
+
+.app {
+  background-image: url('./assets/img/world-opacity-removebg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

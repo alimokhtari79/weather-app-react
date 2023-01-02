@@ -1,4 +1,7 @@
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
+import SegmentsNavLg from './components/SegmentesNavLg';
+import HomePage from './Pages/HomePage';
 import getFormattedWeatherData from './services/weatherService';
 
 function App() {
@@ -8,7 +11,16 @@ function App() {
   };
 
   fetchWeather();
-  return <div className="App">Hello react</div>;
+  return (
+    <main className="flex items-center justify-center">
+      <div className="app w-full lg:w-3/4 xl:w-3/5 h-[500px] sm:h-screen">
+        <Switch>
+          <Route path="/" component={HomePage} exact />
+        </Switch>
+      </div>
+      <SegmentsNavLg />
+    </main>
+  );
 }
 
 export default App;

@@ -6,7 +6,7 @@ import { RxAvatar } from 'react-icons/rx';
 
 const SegmentsNavLg = () => {
   return (
-    <nav className="h-full hidden lg:flex text-gray-600 fixed top-0 left-0">
+    <nav className="h-full bg-neutral-900 hidden lg:flex text-gray-600 fixed top-0 left-0">
       <ul className="h-full flex py-6 flex-col px-6 text-xl items-center justify-evenly ">
         <li className="p-1.5 text-2xl text-white cursor-pointer">
           <RiHome2Line />

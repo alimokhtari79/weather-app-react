@@ -5,7 +5,7 @@ const ExplorePage = () => {
     <div className="p-6">
       <Header title="Explore" />
       <div className="explore-container my-6">
-        <div className="explore-county relative text-sm exploreShadow w-96 flex flex-col rounded-3xl p-5">
+        <div className="explore-county relative text-sm glassEffect w-96 flex flex-col rounded-3xl p-5">
           <figure className="absolute -top-4 right-44">
             <img
               src={require('../assets/img/weather-icon/thunderstorm.png')}

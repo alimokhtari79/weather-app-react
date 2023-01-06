@@ -18,7 +18,7 @@ const SearchPage = () => {
       </div>
       <div className="flex flex-col justify-center items-center text-slate-400 my-10">
         <SlLocationPin className="text-6xl lg:text-8xl" />
-        <p className="text-sm lg:text-lg mt-4">search by location</p>
+        <p className="text-sm lg:text-lg mt-4">Find my location</p>
       </div>
     </div>
   );

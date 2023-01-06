@@ -1,6 +1,5 @@
 import { TiLocation } from 'react-icons/ti';
 import Forecast from '../components/Forecast';
-import SegmentsNav from '../components/SegmentsNav';
 import Temperature from '../components/Temperature';
 
 const HomePage = () => {
@@ -24,9 +23,6 @@ const HomePage = () => {
         <Forecast />
       </section>
       <div className="h-14"></div>
-      <footer>
-        <SegmentsNav />
-      </footer>
     </div>
   );
 };

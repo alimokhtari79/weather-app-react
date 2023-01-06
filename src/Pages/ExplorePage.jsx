@@ -1,15 +1,9 @@
-import { IoChevronBack } from 'react-icons/io5';
+import Header from '../components/Header';
 
 const ExplorePage = () => {
   return (
     <div className="p-6">
-      <header className="flex items-center justify-between">
-        <button>
-          <IoChevronBack />
-        </button>
-        <p>Explore</p>
-        <div></div>
-      </header>
+      <Header title="Explore" />
       <div className="explore-container my-6">
         <div className="explore-county relative text-sm exploreShadow w-96 flex flex-col rounded-3xl p-5">
           <figure className="absolute -top-4 right-44">

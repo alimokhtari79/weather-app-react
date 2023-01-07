@@ -53,7 +53,7 @@ const formatForecastWeather = (data) => {
   hourly = hourly.slice(1, 7).map((day) => {
     return {
       title: formatToLocalTime(day.dt, timezone, 'hh:mm a'),
-      temp: day.temp.day,
+      temp: day.temp,
       icon: day.weather[0].icon,
     };
   });
@@ -77,12 +77,6 @@ const getFormattedWeatherData = async (searchParams) => {
   return { ...formattedCurrentWeather, ...formattedForecastWether };
 };
 
-const formatToLocalTime = (
-  secs,
-  zone,
-  format = "ccc, dd LLL yyyy' | local time: 'hh: mm a"
-) => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
-
 const getFourWeatherData = (searchParams) => {
   const tehran = getWeatherData('weather', { q: 'tehran' }).then((data) =>
     formatCurrentWeather(data)
@@ -102,6 +96,12 @@ const getFourWeatherData = (searchParams) => {
   return [tehran, tokyo, seoul, toronto];
 };
 
-export { getFourWeatherData };
+const formatToLocalTime = (
+  secs,
+  zone,
+  format = "ccc, dd LLL yyyy' | local time: 'hh: mm a"
+) => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
+
+export { formatToLocalTime, getFourWeatherData };
 
 export default getFormattedWeatherData;

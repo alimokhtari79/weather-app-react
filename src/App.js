@@ -5,7 +5,9 @@ import ExplorePage from './Pages/ExplorePage';
 import HomePage from './Pages/HomePage';
 import SearchPage from './Pages/SearchPage';
 import SettingPage from './Pages/SettingPage';
-import getFormattedWeatherData from './services/weatherService';
+import getFormattedWeatherData, {
+  getFourWeatherData,
+} from './services/weatherService';
 
 function App() {
   const fetchWeather = async () => {
@@ -13,7 +15,14 @@ function App() {
     console.log(data);
   };
 
+  const fetchFourWeatherData = async () => {
+    const result = await Promise.all(getFourWeatherData());
+    console.log(result);
+  };
+
   fetchWeather();
+  fetchFourWeatherData();
+
   return (
     <main className="flex w-full items-center justify-center">
       <div className="app w-full lg:w-3/4 xl:w-3/5 h-[500px] sm:h-screen">

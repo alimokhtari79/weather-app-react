@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Layout from './components/Layout';
@@ -10,17 +11,25 @@ import getFormattedWeatherData, {
 } from './services/weatherService';
 
 function App() {
-  const fetchWeather = async () => {
-    const data = await getFormattedWeatherData({ q: 'tehran' });
-    console.log(data);
-  };
+  const [query, setQuery] = useState({ q: 'tehran' });
+  const [units, setUnits] = useState('metric');
+  const [weather, setWeather] = useState(null);
+
+  useEffect(() => {
+    const fetchWeather = async () => {
+      await getFormattedWeatherData({ ...query, units }).then((data) =>
+        setWeather(data)
+      );
+    };
+
+    fetchWeather();
+  }, [query, units]);
 
   const fetchFourWeatherData = async () => {
     const result = await Promise.all(getFourWeatherData());
     console.log(result);
   };
 
-  fetchWeather();
   fetchFourWeatherData();
 
   return (
@@ -28,10 +37,14 @@ function App() {
       <div className="app w-full lg:w-3/4 xl:w-3/5 h-[500px] sm:h-screen">
         <Layout>
           <Switch>
-            <Route path="/" component={HomePage} exact />
+            <Route
+              path="/"
+              render={() => <HomePage weather={weather} />}
+              exact
+            />
             <Route path="/search" component={SearchPage} />
             <Route path="/explore" component={ExplorePage} />
-            <Route path="/setting" component={SettingPage} />
+            <Route path="/setting" render={() => <SettingPage />} />
           </Switch>
         </Layout>
       </div>

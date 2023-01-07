@@ -1,6 +1,50 @@
 import React from 'react';
+import thunderstorm from '../assets/img/weather-icon/thunderstorm.png';
+import rain from '../assets/img/weather-icon/rain.png';
+import snow from '../assets/img/weather-icon/snow.png';
+import mistNight from '../assets/img/weather-icon/mist-night.png';
+import mistDay from '../assets/img/weather-icon/mist-day.png';
+import sun from '../assets/img/weather-icon/sun.png';
+import moon from '../assets/img/weather-icon/moon.png';
+import fewCloudsDay from '../assets/img/weather-icon/few-clouds-day.png';
+import fewCloudsNight from '../assets/img/weather-icon/few-clouds-night.png';
+import clouds from '../assets/img/weather-icon/clouds.png';
+import { formatToLocalTime } from '../services/weatherService';
 
-const Temperature = () => {
+const Temperature = ({
+  weather: { detail, icon, temp, dt, timezone, sunset },
+}) => {
+  // get localTime and localSunset to convert and use witch img for misty day
+  const localTime = formatToLocalTime(dt, timezone, 'hh');
+  const localSunset = formatToLocalTime(sunset, timezone, 'hh');
+
+  // Converting icon from api to local img
+  const convertIconToImg = (icon) => {
+    let img = '';
+    if (icon === '11d') {
+      img = thunderstorm;
+    } else if (icon === '09d' || icon === '10d') {
+      img = rain;
+    } else if (icon === '13d') {
+      img = snow;
+    } else if (icon === '50d' && localSunset <= localTime) {
+      img = mistNight;
+    } else if (icon === '50d' && localSunset > localTime) {
+      img = mistDay;
+    } else if (icon === '01d') {
+      img = sun;
+    } else if (icon === '01n') {
+      img = moon;
+    } else if (icon === '02d') {
+      img = fewCloudsDay;
+    } else if (icon === '02n') {
+      img = fewCloudsNight;
+    } else {
+      img = clouds;
+    }
+    return img;
+  };
+
   return (
     <div className="flex items-center flex-col">
       <div className="w-full flex justify-center mt-8 sm:mt-0">
@@ -8,14 +52,14 @@ const Temperature = () => {
           <img
             className="w-48 md:w-72 py-10 max-w-full
             "
-            src={require('../assets/img/weather-icon/thunderstorm.png')}
+            src={convertIconToImg(icon)}
             alt="weather-icon"
           />
         </figure>
       </div>
-      <p className="font-semibold">Thunder</p>
+      <p className="font-semibold">{detail}</p>
       <p className="text-6xl mt-5 relative">
-        <span>13</span>
+        <span>{temp.toFixed()}</span>
         <span className="absolute text-5xl text-yellow-400 -top-2 ">°</span>
       </p>
     </div>

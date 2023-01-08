@@ -14,3 +14,8 @@
     -webkit-backdrop-filter: blur(1px);
   }
 }
+
+.explore-container {
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 2rem;
+}

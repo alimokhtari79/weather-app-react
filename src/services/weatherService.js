@@ -73,6 +73,7 @@ const getFormattedWeatherData = async (searchParams) => {
     lat,
     lon,
     exclude: 'current,minutely,alerts',
+    units: searchParams.units,
   }).then((data) => formatForecastWeather(data));
   return { ...formattedCurrentWeather, ...formattedForecastWether };
 };

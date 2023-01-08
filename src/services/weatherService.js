@@ -79,21 +79,25 @@ const getFormattedWeatherData = async (searchParams) => {
 };
 
 const getFourWeatherData = (searchParams) => {
-  const tehran = getWeatherData('weather', { q: 'tehran' }).then((data) =>
-    formatCurrentWeather(data)
-  );
+  const tehran = getWeatherData('weather', {
+    q: 'tehran',
+    units: searchParams.units,
+  }).then((data) => formatCurrentWeather(data));
 
-  const tokyo = getWeatherData('weather', { q: 'tokyo' }).then((data) =>
-    formatCurrentWeather(data)
-  );
+  const tokyo = getWeatherData('weather', {
+    q: 'tokyo',
+    units: searchParams.units,
+  }).then((data) => formatCurrentWeather(data));
 
-  const seoul = getWeatherData('weather', { q: 'seoul' }).then((data) =>
-    formatCurrentWeather(data)
-  );
+  const seoul = getWeatherData('weather', {
+    q: 'seoul',
+    units: searchParams.units,
+  }).then((data) => formatCurrentWeather(data));
 
-  const toronto = getWeatherData('weather', { q: 'toronto' }).then((data) =>
-    formatCurrentWeather(data)
-  );
+  const toronto = getWeatherData('weather', {
+    q: 'toronto',
+    units: searchParams.units,
+  }).then((data) => formatCurrentWeather(data));
   return [tehran, tokyo, seoul, toronto];
 };
 

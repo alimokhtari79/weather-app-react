@@ -11,7 +11,7 @@ import getFormattedWeatherData, {
 } from './services/weatherService';
 
 function App() {
-  const [query, setQuery] = useState({ q: 'tehran' });
+  const [query, setQuery] = useState({ q: 'isfahan' });
   const [units, setUnits] = useState('metric');
   const [weather, setWeather] = useState(null);
 
@@ -39,7 +39,7 @@ function App() {
           <Switch>
             <Route
               path="/"
-              render={() => <HomePage weather={weather} />}
+              render={() => <HomePage weather={weather} units={units} />}
               exact
             />
             <Route path="/search" component={SearchPage} />

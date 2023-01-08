@@ -7,12 +7,15 @@ import HomePage from './Pages/HomePage';
 import SearchPage from './Pages/SearchPage';
 import SettingPage from './Pages/SettingPage';
 import getFormattedWeatherData, {
+  formatToLocalTime,
   getFourWeatherData,
 } from './services/weatherService';
 
 function App() {
+  // Default location is isfahan
   const [query, setQuery] = useState({ q: 'isfahan' });
   const [units, setUnits] = useState('metric');
+  const [isMetric, setIsMetric] = useState(false);
   const [weather, setWeather] = useState(null);
   const [cities, setCities] = useState(null);
 
@@ -23,6 +26,10 @@ function App() {
       );
     };
 
+    fetchWeather();
+  }, [query, units]);
+
+  useEffect(() => {
     const fetchFourWeatherData = async () => {
       await Promise.all(getFourWeatherData({ units })).then((data) =>
         setCities(data)
@@ -30,11 +37,7 @@ function App() {
     };
 
     fetchFourWeatherData();
-
-    fetchWeather();
-  }, [query, units]);
-
-  useEffect(() => {}, [units]);
+  }, [units]);
 
   return (
     <main className="flex w-full items-center justify-center">
@@ -46,12 +49,26 @@ function App() {
               render={() => <HomePage units={units} weather={weather} />}
               exact
             />
-            <Route path="/search" component={SearchPage} />
+            <Route
+              path="/search"
+              render={() => <SearchPage setQuery={setQuery} />}
+            />
             <Route
               path="/explore"
-              render={() => <ExplorePage cities={cities} />}
+              render={() => <ExplorePage cities={cities} setQuery={setQuery} />}
             />
-            <Route path="/setting" render={() => <SettingPage />} />
+            <Route
+              path="/setting"
+              render={() => (
+                <SettingPage
+                  weather={weather}
+                  units={units}
+                  setUnits={setUnits}
+                  isMetric={isMetric}
+                  setIsMetric={setIsMetric}
+                />
+              )}
+            />
           </Switch>
         </Layout>
       </div>

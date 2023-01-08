@@ -3,6 +3,7 @@ import { BiX } from 'react-icons/bi';
 import { SlLocationPin } from 'react-icons/sl';
 import Header from '../components/Header';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const SearchPage = ({ setQuery }) => {
   const [city, setCity] = useState('');
@@ -29,7 +30,12 @@ const SearchPage = ({ setQuery }) => {
   };
 
   return (
-    <div className="search-container p-6">
+    <motion.div
+      className="search-container p-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Header title="search for city" />
       <div className="search-input-container w-full flex items-center my-6 h-12 bg-[#1f1f21] rounded-full">
         <RiSearchLine
@@ -62,7 +68,7 @@ const SearchPage = ({ setQuery }) => {
           <p className="text-sm lg:text-lg mt-4">Find my location</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

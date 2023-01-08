@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import './App.css';
 import Layout from './components/Layout';
 import ExplorePage from './Pages/ExplorePage';
@@ -7,9 +7,9 @@ import HomePage from './Pages/HomePage';
 import SearchPage from './Pages/SearchPage';
 import SettingPage from './Pages/SettingPage';
 import getFormattedWeatherData, {
-  formatToLocalTime,
   getFourWeatherData,
 } from './services/weatherService';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   // Default location is isfahan
@@ -39,37 +39,43 @@ function App() {
     fetchFourWeatherData();
   }, [units]);
 
+  const location = useLocation();
+
   return (
     <main className="flex w-full items-center justify-center">
       <div className="app w-full lg:w-3/4 xl:w-3/5 h-[500px] sm:h-screen">
         <Layout>
-          <Switch>
-            <Route
-              path="/"
-              render={() => <HomePage units={units} weather={weather} />}
-              exact
-            />
-            <Route
-              path="/search"
-              render={() => <SearchPage setQuery={setQuery} />}
-            />
-            <Route
-              path="/explore"
-              render={() => <ExplorePage cities={cities} setQuery={setQuery} />}
-            />
-            <Route
-              path="/setting"
-              render={() => (
-                <SettingPage
-                  weather={weather}
-                  units={units}
-                  setUnits={setUnits}
-                  isMetric={isMetric}
-                  setIsMetric={setIsMetric}
-                />
-              )}
-            />
-          </Switch>
+          <AnimatePresence>
+            <Switch location={location} key={location.pathname}>
+              <Route
+                path="/"
+                render={() => <HomePage units={units} weather={weather} />}
+                exact
+              />
+              <Route
+                path="/search"
+                render={() => <SearchPage setQuery={setQuery} />}
+              />
+              <Route
+                path="/explore"
+                render={() => (
+                  <ExplorePage cities={cities} setQuery={setQuery} />
+                )}
+              />
+              <Route
+                path="/setting"
+                render={() => (
+                  <SettingPage
+                    weather={weather}
+                    units={units}
+                    setUnits={setUnits}
+                    isMetric={isMetric}
+                    setIsMetric={setIsMetric}
+                  />
+                )}
+              />
+            </Switch>
+          </AnimatePresence>
         </Layout>
       </div>
     </main>

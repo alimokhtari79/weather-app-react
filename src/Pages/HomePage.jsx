@@ -1,11 +1,17 @@
 import Forecast from '../components/Forecast';
 import Temperature from '../components/Temperature';
 import TimeAndLocation from '../components/TimeAndLocation';
+import { motion } from 'framer-motion';
 
 const HomePage = ({ weather, units }) => {
   console.log(weather);
   return (
-    <div className="w-full">
+    <motion.div
+      className="w-full"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       {weather && (
         <>
           <header className="fixed px-6 py-4 w-full">
@@ -21,7 +27,7 @@ const HomePage = ({ weather, units }) => {
         </>
       )}
       <div className="h-14"></div>
-    </div>
+    </motion.div>
   );
 };
 

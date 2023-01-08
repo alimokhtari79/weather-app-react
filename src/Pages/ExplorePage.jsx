@@ -1,9 +1,15 @@
 import Header from '../components/Header';
 import Explore from './../components/Explore';
+import { motion } from 'framer-motion';
 
 const ExplorePage = ({ cities, setQuery }) => {
   return (
-    <div className="p-6">
+    <motion.div
+      className="p-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Header title="Explore" />
       <div className="explore-container grid my-6">
         {cities &&
@@ -12,7 +18,7 @@ const ExplorePage = ({ cities, setQuery }) => {
           ))}
       </div>
       <div className="mb-16"></div>
-    </div>
+    </motion.div>
   );
 };
 

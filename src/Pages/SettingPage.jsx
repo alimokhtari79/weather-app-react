@@ -1,5 +1,6 @@
 import Header from '../components/Header';
 import { formatToLocalTime } from '../services/weatherService';
+import { motion } from 'framer-motion';
 
 const SettingPage = ({ weather, setUnits, isMetric, setIsMetric }) => {
   const handelChangeUnits = () => {
@@ -12,7 +13,12 @@ const SettingPage = ({ weather, setUnits, isMetric, setIsMetric }) => {
   };
 
   return (
-    <div className="p-6">
+    <motion.div
+      className="p-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Header title="Setting" />
       <div className="setting-container flex flex-col items-center my-6">
         <div className="time text-8xl mb-9">
@@ -34,7 +40,7 @@ const SettingPage = ({ weather, setUnits, isMetric, setIsMetric }) => {
           <p className="text-yellow-400">Dark</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

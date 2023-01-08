@@ -2,7 +2,7 @@ import Forecast from '../components/Forecast';
 import Temperature from '../components/Temperature';
 import TimeAndLocation from '../components/TimeAndLocation';
 
-const HomePage = ({ weather }) => {
+const HomePage = ({ weather, units }) => {
   console.log(weather);
   return (
     <div className="w-full">
@@ -15,8 +15,8 @@ const HomePage = ({ weather }) => {
             <Temperature weather={weather} />
           </section>
           <section>
-            <Forecast />
-            <Forecast />
+            <Forecast items={weather.hourly} weather={weather} units={units} />
+            <Forecast items={weather.daily} weather={weather} units={units} />
           </section>
         </>
       )}

@@ -1,20 +1,14 @@
 import thunderstorm from '../assets/img/weather-icon/thunderstorm.png';
 import rain from '../assets/img/weather-icon/rain.png';
 import snow from '../assets/img/weather-icon/snow.png';
-import mistNight from '../assets/img/weather-icon/mist-night.png';
-import mistDay from '../assets/img/weather-icon/mist-day.png';
+import mist from '../assets/img/weather-icon/mist.png';
 import sun from '../assets/img/weather-icon/sun.png';
 import moon from '../assets/img/weather-icon/moon.png';
 import fewCloudsDay from '../assets/img/weather-icon/few-clouds-day.png';
 import fewCloudsNight from '../assets/img/weather-icon/few-clouds-night.png';
 import clouds from '../assets/img/weather-icon/clouds.png';
-import { formatToLocalTime } from '../services/weatherService';
 
-const Forecast = ({ items, weather: { dt, timezone, sunset } }) => {
-  // get localTime and localSunset to convert and use witch img for misty day
-  const localTime = formatToLocalTime(dt, timezone, 'hh');
-  const localSunset = formatToLocalTime(sunset, timezone, 'hh');
-
+const Forecast = ({ items }) => {
   // Converting icon from api to local img
   const convertIconToImg = (icon) => {
     let img = '';
@@ -24,10 +18,8 @@ const Forecast = ({ items, weather: { dt, timezone, sunset } }) => {
       img = rain;
     } else if (icon === '13d') {
       img = snow;
-    } else if (icon === '50d' && localSunset <= localTime) {
-      img = mistNight;
-    } else if (icon === '50d' && localSunset > localTime) {
-      img = mistDay;
+    } else if (icon === '50d') {
+      img = mist;
     } else if (icon === '01d') {
       img = sun;
     } else if (icon === '01n') {

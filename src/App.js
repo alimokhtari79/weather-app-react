@@ -14,6 +14,7 @@ function App() {
   const [query, setQuery] = useState({ q: 'isfahan' });
   const [units, setUnits] = useState('metric');
   const [weather, setWeather] = useState(null);
+  const [cities, setCities] = useState(null);
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -22,15 +23,18 @@ function App() {
       );
     };
 
+    const fetchFourWeatherData = async () => {
+      await Promise.all(getFourWeatherData({ units })).then((data) =>
+        setCities(data)
+      );
+    };
+
+    fetchFourWeatherData();
+
     fetchWeather();
   }, [query, units]);
 
-  const fetchFourWeatherData = async () => {
-    const result = await Promise.all(getFourWeatherData());
-    console.log(result);
-  };
-
-  fetchFourWeatherData();
+  useEffect(() => {}, [units]);
 
   return (
     <main className="flex w-full items-center justify-center">
@@ -39,11 +43,14 @@ function App() {
           <Switch>
             <Route
               path="/"
-              render={() => <HomePage weather={weather} units={units} />}
+              render={() => <HomePage units={units} weather={weather} />}
               exact
             />
             <Route path="/search" component={SearchPage} />
-            <Route path="/explore" component={ExplorePage} />
+            <Route
+              path="/explore"
+              render={() => <ExplorePage cities={cities} />}
+            />
             <Route path="/setting" render={() => <SettingPage />} />
           </Switch>
         </Layout>

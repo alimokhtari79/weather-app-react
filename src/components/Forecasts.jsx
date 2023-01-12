@@ -37,7 +37,7 @@ const Forecasts = ({ items, title }) => {
     <div className="flex justify-center">
       <div className="flex flex-col w-10/12">
         <header>{title}</header>
-        <div className="py-6 sm:p-6 flex sm:justify-center my-8 overflow-x-auto gap-5">
+        <div className="py-6 sm:p-6 flex sm:justify-center my-5 overflow-x-auto gap-5">
           {items.map((item) => (
             <Forecast
               item={item}

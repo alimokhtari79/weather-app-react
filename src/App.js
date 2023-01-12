@@ -10,6 +10,7 @@ import getFormattedWeatherData, {
   getFourWeatherData,
 } from './services/weatherService';
 import { AnimatePresence } from 'framer-motion';
+import NotFound from './Pages/NotFound';
 
 function App() {
   // Default location is isfahan
@@ -74,6 +75,7 @@ function App() {
                   />
                 )}
               />
+              <Route component={NotFound} />
             </Switch>
           </AnimatePresence>
         </Layout>

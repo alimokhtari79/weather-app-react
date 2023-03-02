@@ -16,6 +16,10 @@
 - <img alt="tailwind"  src="https://skillicons.dev/icons?i=tailwind" width="20" height="20" align="center" /> [Tailwind Css](https://tailwindcss.com/)
 
 
+## 🚀 Demo
+
+Visit on netlify : [Project Link](https://weather-app-alimokhtari79.netlify.app/)
+
 
 ## 🛠️ Installation Steps
 

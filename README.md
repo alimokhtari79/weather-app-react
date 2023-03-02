@@ -10,9 +10,10 @@
   
   ## ⚗️technologies
 
-
+- <img alt="tailwind"  src="https://skillicons.dev/icons?i=html" width="20" height="20" align="center" /> HTML
+- - <img alt="tailwind"  src="https://skillicons.dev/icons?i=html" width="20" height="20" align="center" /> Java Scripts
 - <img alt="react"  src="https://skillicons.dev/icons?i=react" width="20" height="20" align="center" /> [React.js](https://reactjs.org/)
-- <img alt="react"  src="https://skillicons.dev/icons?i=react" width="20" height="20" align="center" /> [Tailwind Css](https://tailwindcss.com/)
+- <img alt="tailwind"  src="https://skillicons.dev/icons?i=tailwind" width="20" height="20" align="center" /> [Tailwind Css](https://tailwindcss.com/)
 
 
 

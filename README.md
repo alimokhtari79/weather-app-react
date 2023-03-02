@@ -6,6 +6,8 @@
       Weather App - React.js
   </h1>
   
+  https://user-images.githubusercontent.com/72548955/222514260-1214f8d5-2956-46e9-95de-b8ce691de587.mp4
+  
   ## ⚗️technologies
 
 

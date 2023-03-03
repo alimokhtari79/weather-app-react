@@ -26,13 +26,13 @@ Visit on netlify : [Project Link](https://weather-app-alimokhtari79.netlify.app/
 1. Clone the repository
 
 ```bash
-git clone https://github.com/rahuldkjain/github-profile-readme-generator.git
+git clone https://github.com/alimokhtari79/weather-app-react.git
 ```
 
 2. Change the working directory
 
 ```bash
-cd github-profile-readme-generator
+cd weather-app-react
 ```
 
 3. Install dependencies

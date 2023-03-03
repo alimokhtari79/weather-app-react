@@ -9,7 +9,6 @@
   https://user-images.githubusercontent.com/72548955/222514260-1214f8d5-2956-46e9-95de-b8ce691de587.mp4
   
   ## ⚗️technologies
-
 - <img alt="html"  src="https://skillicons.dev/icons?i=html" width="20" height="20" align="center" /> HTML
 - <img alt="js"  src="https://skillicons.dev/icons?i=js" width="20" height="20" align="center" /> Java Scripts
 - <img alt="react"  src="https://skillicons.dev/icons?i=react" width="20" height="20" align="center" /> [React.js](https://reactjs.org/)
